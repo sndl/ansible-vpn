@@ -1,0 +1,5 @@
+---
+- name: reload ipsec
+  service:
+    name: ipsec
+    state: reloaded

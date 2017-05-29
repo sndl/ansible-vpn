@@ -1,0 +1,5 @@
+---
+- name: Install OpenSwan
+  apt:
+    name: strongswan
+    state: present

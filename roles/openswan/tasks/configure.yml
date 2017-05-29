@@ -1,0 +1,34 @@
+---
+- name: Enable ip forward
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+    reload: yes
+
+- name: Disable ip redirects
+  sysctl:
+    name: "{{ item }}"
+    value: 0
+    reload: yes
+  with_items:
+    - net.ipv4.conf.all.accept_redirects
+    - net.ipv4.conf.all.send_redirects
+
+- name: Configure NAT
+  iptables:
+    table: nat
+    chain: POSTROUTING
+    source: "{{ point_a_subnet }}"
+    destination: "{{ point_b_subnet }}"
+    jump: SNAT
+    to_source: "{{ ansible_default_ipv4.address }}"
+
+- name: Copy ipsec configuration templates
+  template:
+    src: "{{ item }}"
+    dest: "/etc/{{ item }}"
+  notify:
+    - reload ipsec
+  with_items:
+    - ipsec.conf
+    - ipsec.secrets
