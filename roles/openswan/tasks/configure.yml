@@ -21,7 +21,7 @@
     source: "{{ point_a_subnet }}"
     destination: "{{ point_b_subnet }}"
     jump: SNAT
-    to_source: "{{ ansible_default_ipv4.address }}"
+    to_source: "{{ ansible_all_ipv4_addresses[0] }}"
 
 - name: Copy ipsec configuration templates
   template:
