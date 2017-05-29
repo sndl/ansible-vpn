@@ -28,7 +28,7 @@
     src: "{{ item }}"
     dest: "/etc/{{ item }}"
   notify:
-    - reload ipsec
+    - restart ipsec
   with_items:
     - ipsec.conf
     - ipsec.secrets

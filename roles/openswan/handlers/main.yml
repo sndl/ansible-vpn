@@ -1,5 +1,5 @@
 ---
-- name: reload ipsec
+- name: restart ipsec
   service:
     name: ipsec
-    state: reloaded
+    state: restarted
