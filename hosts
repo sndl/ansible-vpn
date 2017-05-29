@@ -6,7 +6,7 @@ ipsec_secret='12345'
 ansible_ssh_common_args='-i ./.vagrant/machines/vm1/virtualbox/private_key'
 point_a_subnet=10.10.20.10/24
 point_b_subnet=10.10.30.10/24
-site_b_public_ip=192.168.11.10
+site_b_public_ip=192.168.10.11
 
 [vm1]
 192.168.10.10 
@@ -18,4 +18,4 @@ point_b_subnet=10.10.20.10/24
 site_b_public_ip=192.168.10.10
 
 [vm2]
-192.168.11.10
+192.168.10.11
